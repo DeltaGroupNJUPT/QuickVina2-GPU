@@ -33,11 +33,11 @@ struct ele
 
 		//N.B.: now, d_zero and d_positive count from right to left
 		for (int i=0;i<d_.size();i++){
-			bitMask=ONE<<i;
+			bitMask=ONE<<i;  //one左移i位赋给bitMask
 //			d_zero=d_zero<<1;
 //			d_positive=d_positive<<1;
 
-			if (d_[i]==0) d_zero |= bitMask;
+			if (d_[i]==0) d_zero |= bitMask;//|=是按位或并赋值
  			else if (d_[i]>0) d_positive |= bitMask;
 		}
 	}

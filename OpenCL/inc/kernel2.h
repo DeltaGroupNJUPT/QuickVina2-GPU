@@ -34,6 +34,7 @@
 #define SMOOTH_SIZE 2051
 #define MAX_CONTAINER_SIZE_EVERY_WI 5
 #define EL_TYPE_H_CL 0
+#define SIZE_OF_LIST (10*(6 +  MAX_NUM_OF_LIG_TORSION + MAX_NUM_OF_FLEX_TORSION ))
 
 
 typedef struct {
@@ -171,4 +172,24 @@ typedef struct {
 	output_type_cl container[MAX_CONTAINER_SIZE_EVERY_WI];
 	int current_size;
 }out_container;
+typedef struct {
+	float position[3];
+	float orientation[4];
+	float lig_torsion[MAX_NUM_OF_LIG_TORSION];
+	float flex_torsion[MAX_NUM_OF_FLEX_TORSION];
+}std_vector;
+typedef struct {
+	std_vector x_cl;
+	float energy;
+	change_cl d_cl;
+	long d_zero;
+	long d_positive;
+}ele_cl;
+typedef struct {
+	ele_cl list_cl[SIZE_OF_LIST];
+	int n_variable;
+	std_vector tempx_c;
+
+
+}visited_cl;
 
