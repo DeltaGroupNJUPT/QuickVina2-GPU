@@ -186,10 +186,12 @@ typedef struct {
 	long d_positive;
 }ele_cl;
 typedef struct {
-	ele_cl list_cl[SIZE_OF_LIST];
+	ele_cl *list_cl[SIZE_OF_LIST];
 	int n_variable;
-	std_vector tempx_c;
-
-
+	int p;
+	float tempf;
+	bool full;
+	int index;
 }visited_cl;
+
 
