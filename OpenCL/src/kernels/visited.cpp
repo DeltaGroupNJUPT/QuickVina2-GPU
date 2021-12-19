@@ -73,7 +73,7 @@ inline bool add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl*
 	}
 	return true;
 }
-bool check(visited_cl* visited, std_vector now_x, float now_f, change_cl* now_d, int neighbor)
+bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* now_d, int neighbor)
 {
 	bool newXBigger, newYBigger;
 	const long ONE = 1;
@@ -84,12 +84,156 @@ bool check(visited_cl* visited, std_vector now_x, float now_f, change_cl* now_d,
 	{
 		bitMask = ONE << i;
 		if( (visited->list_cl[neighbor]->d_zero & bitMask) ||!(now_d->position[i])){
+			
         }
 		else
 		{
 			const bool nowPositive = now_d->position[i] > 0;
+			const bool dPositive = visited->list_cl[neighbor]->d_positive & bitMask;
+			if (nowPositive ^ dPositive) {
 
+			}
+			else {
+				newXBigger = (now_x->position[i] - visited->list_cl[neighbor]->x_cl.position[i]) > 0;
+				if (nowPositive ? (newXBigger ^ newYBigger) : (!(newXBigger ^ newYBigger))) {
+
+				}
+				else {
+					return false;
+				}
+			}
 		}
 	}
+	for (int i = 0; i < 4; i++)
+	{
+		bitMask = ONE << i;
+		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->orientation[i])) {
+
+		}
+		else
+		{
+			const bool nowPositive = now_d->position[i] > 0;
+			const bool dPositive = visited->list_cl[neighbor]->d_positive & bitMask;
+			if (nowPositive ^ dPositive) {
+
+			}
+			else {
+				newXBigger = (now_x->orientation[i] - visited->list_cl[neighbor]->x_cl.orientation[i]) > 0;
+				if (nowPositive ? (newXBigger ^ newYBigger) : (!(newXBigger ^ newYBigger))) {
+
+				}
+				else {
+					return false;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++)
+	{
+		bitMask = ONE << i;
+		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->lig_torsion[i])) {
+
+		}
+		else
+		{
+			const bool nowPositive = now_d->position[i] > 0;
+			const bool dPositive = visited->list_cl[neighbor]->d_positive & bitMask;
+			if (nowPositive ^ dPositive) {
+
+			}
+			else {
+				newXBigger = (now_x->lig_torsion[i] - visited->list_cl[neighbor]->x_cl.lig_torsion[i]) > 0;
+				if (nowPositive ? (newXBigger ^ newYBigger) : (!(newXBigger ^ newYBigger))) {
+
+				}
+				else {
+					return false;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++)
+	{
+		bitMask = ONE << i;
+		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->flex_torsion[i])) {
+
+		}
+		else
+		{
+			const bool nowPositive = now_d->position[i] > 0;
+			const bool dPositive = visited->list_cl[neighbor]->d_positive & bitMask;
+			if (nowPositive ^ dPositive) {
+
+			}
+			else {
+				newXBigger = (now_x->flex_torsion[i] - visited->list_cl[neighbor]->x_cl.flex_torsion[i]) > 0;
+				if (nowPositive ? (newXBigger ^ newYBigger) : (!(newXBigger ^ newYBigger))) {
+
+				}
+				else {
+					return false;
+				}
+			}
+		}
+	}
+}
+inline float dist2_cl(output_type_cl *now, visited_cl* visited, int neighbor) {
+	float out = 0;
+	for (int i = 0; i < 3; i++){
+		float d = visited->list_cl[neighbor]->x_cl.position[i] - now->position[i];
+	    out += d * d;
+	}
+	for (int i = 0; i < 4; i++) {
+		float d = visited->list_cl[neighbor]->x_cl.orientation[i] - now->orientation[i];
+		out += d * d;
+	}
+	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++) {
+		float d = visited->list_cl[neighbor]->x_cl.lig_torsion[i] - now->lig_torsion[i];
+		out += d * d;
+	}
+	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++) {
+		float d = visited->list_cl[neighbor]->x_cl.flex_torsion[i] - now->flex_torsion[i];
+		out += d * d;
+	}
+	return out;
+}
+bool interesting(output_type_cl *conf_v, float f, change_cl *g,visited_cl *visited)
+{
+	int len = visited->index;
+	if (visited->index == 0) {
+		return true;
+	}
+	else {
+		if (!visited->full) {
+			return true;
+		}
+		else {
+			float dist[SIZE_OF_LIST];
+			bool notPicked [SIZE_OF_LIST];
+			for (int i = 0; i < len; i++)
+			{
+				dist[i] = dist2_cl(conf_v, visited, i);
+			}
+			bool flag = false;
+			float min = 1e10;
+			int p = 0;
+			const int maxCheck = 2 * visited->n_variable;
+			for (int i = 0; i < maxCheck; i++)
+			{
+				min = 1e10;
+				for (int j = 0; i < len; j++) {
+					if (notPicked[j] && (dist[j] < min)) {
+						p = j;
+						min = dist[j];
+					}
+				}
+				notPicked[p] = false;
+				flag = check(visited, conf_v, f, g, p);
+				if (flag) break;
+			}
+			return flag;
+		}
+	}
+	return true;
 }
 

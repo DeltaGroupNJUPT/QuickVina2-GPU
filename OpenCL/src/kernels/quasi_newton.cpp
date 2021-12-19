@@ -710,6 +710,10 @@ void bfgs(					output_type_cl*			x,
 
 	output_type_cl x_new;
 	output_type_cl_init_with_output(&x_new, x);
+
+
+	visited_cl *visited;
+	visited_init(visited);
 	 
 	float f0 = m_eval_deriv(	x,
 								g,
@@ -719,6 +723,10 @@ void bfgs(					output_type_cl*			x,
 								hunt_cap,
 								epsilon_fl
 							);
+	if (!interesting(x, f0, g)) {
+		return f0;
+	}
+	add(visited, x, f0, g);
 
 	float f_orig = f0;
 	// Init g_orig, x_orig
@@ -774,6 +782,7 @@ void bfgs(					output_type_cl*			x,
 		}
 
 		bool h_updated = bfgs_update(&h, &p, &y, alpha, epsilon_fl);
+		add(visited, x, f0, g);
 	}
 
 	if (!(f0 <= f_orig)) {
