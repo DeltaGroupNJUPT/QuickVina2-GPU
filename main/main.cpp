@@ -292,7 +292,7 @@ void main_procedure(model& m, const boost::optional<model>& ref, // m is non-con
 				 bool score_only, bool local_only, bool randomize_only, bool no_cache,
 				 const grid_dims& gd, int exhaustiveness,
 				 const flv& weights,
-				 int cpu, int seed, int verbosity, sz num_modes, fl energy_range, tee& log) {
+				 int cpu, int seed, int verbosity, sz num_modes, fl energy_range, tee& log,int search_depth, int thread) {
 
 	doing(verbosity, "Setting up the scoring function", log);
 
@@ -313,6 +313,17 @@ void main_procedure(model& m, const boost::optional<model>& ref, // m is non-con
 	parallel_mc par;
 	sz heuristic = m.num_movable_atoms() + 10 * m.get_size().num_degrees_of_freedom();
 	par.mc.num_steps = unsigned(70 * 3 * (50 + heuristic) / 2); // 2 * 70 -> 8 * 20 // FIXME
+	if (search_depth != 0) {
+		par.mc.search_depth = search_depth;
+		assert(search_depth >= 1);
+	}
+	else {
+		par.mc.search_depth = (int)(0.24 * m.num_movable_atoms() + 0.29 * m.get_size().num_degrees_of_freedom() - 5.74);
+		if (par.mc.search_depth < 1) par.mc.search_depth = 1;
+	}
+	std::cout << "Search depth is set to " << par.mc.search_depth << std::endl;
+	par.mc.thread = thread;// 20210811 Glinttsd
+
 	par.mc.ssd_par.evals = unsigned((25 + m.num_movable_atoms()) / 3);
 	par.mc.min_rmsd = 1.0;
 	par.mc.num_saved_mins = 20;
@@ -340,7 +351,14 @@ void main_procedure(model& m, const boost::optional<model>& ref, // m is non-con
 			bool cache_needed = !(score_only || randomize_only || local_only);
 			if(cache_needed) doing(verbosity, "Analyzing the binding site", log);
 			cache c("scoring_function_version001", gd, slope, atom_type::XS);
-			if(cache_needed) c.populate(m, prec, m.get_movable_atom_types(prec.atom_typing_used()));
+#ifdef OPENCL_PART_1
+			//clock_t start_time = clock();
+			if (cache_needed) c.populate_cl(m, prec, m.get_movable_atom_types(prec.atom_typing_used()));
+			//clock_t end_time = clock();
+			//printf("\nTotal runtime: %f s", double(end_time - start_time) / CLOCKS_PER_SEC);
+#else
+           if(cache_needed) c.populate(m, prec, m.get_movable_atom_types(prec.atom_typing_used()));
+#endif			
 			if(cache_needed) done(verbosity, log);
 			do_search(m, ref, wt, prec, c, prec, c, nc,
 					  out_name,
@@ -409,7 +427,7 @@ model parse_bundle(const boost::optional<std::string>& rigid_name_opt, const boo
 
 int main(int argc, char* argv[]) {
 	using namespace boost::program_options;
-	const std::string version_string = "AutoDock Vina 1.1.2 (May 11, 2011)";
+	const std::string version_string = "QuickVina2-GPU";
 	const std::string error_message = "\n\n\
 Please contact the author, Dr. Oleg Trott <ot14@columbia.edu>, so\n\
 that this problem can be resolved. The reproducibility of the\n\
@@ -431,20 +449,13 @@ Thank you!\n";
 
 	const std::string cite_message = "\
 ############################################################################\n\
-# If you used Quick Vina 2 in your work, please cite:                      #\n\
+# If you used QuickVina2-GPU in your work, please cite:                      #\n\
 #                                                                          #\n\
-# Amr Alhossary, Stephanus Daniel Handoko, Yuguang Mu, and Chee-Keong Kwoh,#\n\
+# Wang Lingyue, Shidi£¬Tang, Huang Qinqin,                                #\n\
+# Hu Haifeng, Wu Jiansheng£¬and Zhu Yanxiang,.                                                                          #\n\
 # Fast, Accurate, and Reliable Molecular Docking with QuickVina 2,         #\n\
 # Bioinformatics (2015), doi: 10.1093/bioinformatics/btv082                #\n\
-#                                                                          #\n\
-# You are also encouraged to cite Quick Vina 1:                            #\n\
-# Stephanus Daniel Handoko, Xuchang Ouyang, Chinh Tran To Su, Chee Keong   #\n\
-# Kwoh, Yew Soon Ong,                                                      #\n\
-# QuickVina: Accelerating AutoDock Vina Using Gradient-Based Heuristics for#\n\
-# Global Optimization,                                                     #\n\
-# IEEE/ACM Transactions on Computational Biology and Bioinformatics,vol.9, #\n\
-# no. 5, pp. 1266-1272, Sept.-Oct. 2012, doi: 10.1109/TCBB.2012.82         #\n\
-#                                                                          #\n\
+# Accelerating Quick Vina2 with GPUs. ChemRxiv (2021).Print.                                                                          #\n\
 # and original AutoDock Vina paper:                                        #\n\
 # O. Trott, A. J. Olson,                                                   #\n\
 # AutoDock Vina: improving the speed and accuracy of docking with a        #\n\
@@ -456,8 +467,10 @@ Thank you!\n";
 	try {
 		std::string rigid_name, ligand_name, flex_name, config_name, out_name, log_name;
 		fl center_x, center_y, center_z, size_x, size_y, size_z;
-		int cpu = 0, seed, exhaustiveness, verbosity = 2, num_modes = 9;
+		int cpu = 1, seed, exhaustiveness=1, verbosity = 2, num_modes = 9;
 		fl energy_range = 2.0;
+		int search_depth = 0; // 20210811 Glinttsd
+		int thread = 0;
 
 		// -0.035579, -0.005156, 0.840245, -0.035069, -0.587439, 0.05846
 		fl weight_gauss1      = -0.035579;
@@ -494,8 +507,10 @@ Thank you!\n";
 		;
 		options_description advanced("Advanced options (see the manual)");
 		advanced.add_options()
-			("score_only",     bool_switch(&score_only),     "score only - search space can be omitted")
-			("local_only",     bool_switch(&local_only),     "do local search only")
+			("thread", value<int>(&thread)->default_value(1000), "the number of computing lanes in Vina-GPU") // 20210811 Glinttsd
+			("search_depth", value<int>(&search_depth)->default_value(0), "the number of search depth in monte carlo") // 20210811 Glinttsd
+			//("score_only",     bool_switch(&score_only),     "score only - search space can be omitted")
+			//("local_only",     bool_switch(&local_only),     "do local search only")
 			("randomize_only", bool_switch(&randomize_only), "randomize input, attempting to avoid clashes")
 			("weight_gauss1", value<fl>(&weight_gauss1)->default_value(weight_gauss1),                "gauss_1 weight")
 			("weight_gauss2", value<fl>(&weight_gauss2)->default_value(weight_gauss2),                "gauss_2 weight")
@@ -506,9 +521,9 @@ Thank you!\n";
 		;
 		options_description misc("Misc (optional)");
 		misc.add_options()
-			("cpu", value<int>(&cpu), "the number of CPUs to use (the default is to try to detect the number of CPUs or, failing that, use 1)")
+			//("cpu", value<int>(&cpu), "the number of CPUs to use (the default is to try to detect the number of CPUs or, failing that, use 1)")
 			("seed", value<int>(&seed), "explicit random seed")
-			("exhaustiveness", value<int>(&exhaustiveness)->default_value(8), "exhaustiveness of the global search (roughly proportional to time): 1+")
+			//("exhaustiveness", value<int>(&exhaustiveness)->default_value(8), "exhaustiveness of the global search (roughly proportional to time): 1+")
 			("num_modes", value<int>(&num_modes)->default_value(9), "maximum number of binding modes to generate")
 			("energy_range", value<fl>(&energy_range)->default_value(3.0), "maximum energy difference between the best binding mode and the worst one displayed (kcal/mol)")
 		;
@@ -651,19 +666,19 @@ Thank you!\n";
 				gd[i].end = gd[i].begin + real_span;
 			}
 		}
-		if(vm.count("cpu") == 0) {
-			unsigned num_cpus = boost::thread::hardware_concurrency();
-			if(verbosity > 1) {
-				if(num_cpus > 0)
-					log << "Detected " << num_cpus << " CPU" << ((num_cpus > 1) ? "s" : "") << '\n';
-				else
-					log << "Could not detect the number of CPUs, using 1\n";
-			}
-			if(num_cpus > 0)
-				cpu = num_cpus;
-			else
-				cpu = 1;
-		}
+		//if(vm.count("cpu") == 0) {
+		//	unsigned num_cpus = boost::thread::hardware_concurrency();
+		//	if(verbosity > 1) {
+		//		if(num_cpus > 0)
+		//			log << "Detected " << num_cpus << " CPU" << ((num_cpus > 1) ? "s" : "") << '\n';
+		//		else
+		//			log << "Could not detect the number of CPUs, using 1\n";
+		//	}
+		//	if(num_cpus > 0)
+		//		cpu = num_cpus;
+		//	else
+		//		cpu = 1;
+		//}
 		if(cpu < 1) 
 			cpu = 1;
 		if(verbosity > 1 && exhaustiveness < cpu)
@@ -681,7 +696,7 @@ Thank you!\n";
 					score_only, local_only, randomize_only, false, // no_cache == false
 					gd, exhaustiveness,
 					weights,
-					cpu, seed, verbosity, max_modes_sz, energy_range, log);
+					cpu, seed, verbosity, max_modes_sz, energy_range, log, search_depth, thread);
 	}
 	catch(file_error& e) {
 		std::cerr << "\n\nError: could not open \"" << e.name.string() << "\" for " << (e.in ? "reading" : "writing") << ".\n";

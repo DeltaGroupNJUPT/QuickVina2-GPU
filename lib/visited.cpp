@@ -1,5 +1,4 @@
 #include "visited.h"
-
 double ele::dist2(std::vector<double> now){
 	double out=0;
 	for (int i=0;i<size();i++){

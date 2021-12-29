@@ -133,7 +133,6 @@ fl bfgs(F& f, Conf& x, Change& g, const unsigned max_steps, const fl average_req
 	}
 	
 	f.m->tried.add(x, f0, g);
-    bfgs_count++; 
 	
 
 	fl f_orig = f0;

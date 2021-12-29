@@ -723,74 +723,76 @@ void bfgs(					output_type_cl*			x,
 								hunt_cap,
 								epsilon_fl
 							);
-	if (!interesting(x, f0, g)) {
-		return f0;
+	if (!interesting(x, f0, g, visited)) {
+		x->e = f0;
 	}
-	add(visited, x, f0, g);
-
-	float f_orig = f0;
-	// Init g_orig, x_orig
-	change_cl g_orig;
-	change_cl_init_with_change(&g_orig, g);
-	output_type_cl x_orig;
-	output_type_cl_init_with_output(&x_orig, x);
-	// Init p
-	change_cl p;
-	change_cl_init_with_change(&p, g);
-
-	float f_values[MAX_NUM_OF_BFGS_STEPS + 1];
-	f_values[0] = f0;
-
-	for (int step = 0; step < max_steps; step++) {
-
-		minus_mat_vec_product(&h, g, &p);
-		float f1 = 0;
-
-		const float alpha = line_search(	m_cl_gpu,
-											p_cl_gpu,
-											ig_cl_gpu,
-											n,
-											x,
-											g,
-											f0,
-											&p,
-											&x_new,
-											&g_new,
-											&f1,
-											epsilon_fl,
-											hunt_cap
-										);
-
-		change_cl y;
-		change_cl_init_with_change(&y, &g_new);
-		// subtract_change
-		for (int i = 0; i < n; i++) {
-			float tmp = find_change_index_read(&y, i) - find_change_index_read(g, i);
-			find_change_index_write(&y, i, tmp);
-		}
-		f_values[step + 1] = f1;
-		f0 = f1;
-		output_type_cl_init_with_output(x, &x_new);
-		if (!(sqrt(scalar_product(g, g, n)) >= 1e-5))break;
-		change_cl_init_with_change(g, &g_new);
-
-		if (step == 0) {
-			float yy = scalar_product(&y, &y, n);
-			if (fabs(yy) > epsilon_fl) {
-				matrix_set_diagonal(&h, alpha * scalar_product(&y, &p, n) / yy);
-			}
-		}
-
-		bool h_updated = bfgs_update(&h, &p, &y, alpha, epsilon_fl);
+	else
+	{
 		add(visited, x, f0, g);
-	}
+		float f_orig = f0;
+		// Init g_orig, x_orig
+		change_cl g_orig;
+		change_cl_init_with_change(&g_orig, g);
+		output_type_cl x_orig;
+		output_type_cl_init_with_output(&x_orig, x);
+		// Init p
+		change_cl p;
+		change_cl_init_with_change(&p, g);
 
-	if (!(f0 <= f_orig)) {
-		f0 = f_orig;
-		output_type_cl_init_with_output(x, &x_orig);
-		change_cl_init_with_change(g, &g_orig);
-	}
+		float f_values[MAX_NUM_OF_BFGS_STEPS + 1];
+		f_values[0] = f0;
 
-	// write output_type_cl energy
-	x->e = f0;
+		for (int step = 0; step < max_steps; step++) {
+
+			minus_mat_vec_product(&h, g, &p);
+			float f1 = 0;
+
+			const float alpha = line_search(m_cl_gpu,
+				p_cl_gpu,
+				ig_cl_gpu,
+				n,
+				x,
+				g,
+				f0,
+				&p,
+				&x_new,
+				&g_new,
+				&f1,
+				epsilon_fl,
+				hunt_cap
+			);
+
+			change_cl y;
+			change_cl_init_with_change(&y, &g_new);
+			// subtract_change
+			for (int i = 0; i < n; i++) {
+				float tmp = find_change_index_read(&y, i) - find_change_index_read(g, i);
+				find_change_index_write(&y, i, tmp);
+			}
+			f_values[step + 1] = f1;
+			f0 = f1;
+			output_type_cl_init_with_output(x, &x_new);
+			if (!(sqrt(scalar_product(g, g, n)) >= 1e-5))break;
+			change_cl_init_with_change(g, &g_new);
+
+			if (step == 0) {
+				float yy = scalar_product(&y, &y, n);
+				if (fabs(yy) > epsilon_fl) {
+					matrix_set_diagonal(&h, alpha * scalar_product(&y, &p, n) / yy);
+				}
+			}
+
+			bool h_updated = bfgs_update(&h, &p, &y, alpha, epsilon_fl);
+			add(visited, x, f0, g);
+		}
+
+		if (!(f0 <= f_orig)) {
+			f0 = f_orig;
+			output_type_cl_init_with_output(x, &x_orig);
+			change_cl_init_with_change(g, &g_orig);
+		}
+
+		// write output_type_cl energy
+		x->e = f0;
+	}
 }

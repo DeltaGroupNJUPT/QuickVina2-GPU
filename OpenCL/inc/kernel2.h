@@ -172,19 +172,15 @@ typedef struct {
 	output_type_cl container[MAX_CONTAINER_SIZE_EVERY_WI];
 	int current_size;
 }out_container;
+
 typedef struct {
-	float position[3];
-	float orientation[4];
-	float lig_torsion[MAX_NUM_OF_LIG_TORSION];
-	float flex_torsion[MAX_NUM_OF_FLEX_TORSION];
-}std_vector;
-typedef struct {
-	std_vector x_cl;
+	output_type_cl  x_cl;
 	float energy;
 	change_cl d_cl;
 	long d_zero;
 	long d_positive;
 }ele_cl;
+
 typedef struct {
 	ele_cl *list_cl[SIZE_OF_LIST];
 	int n_variable;

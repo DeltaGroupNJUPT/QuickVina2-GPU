@@ -1,5 +1,4 @@
-#include "kernel2.h"
-inline void ele_init_cl(ele_cl* present, std_vector* x, float f_cl, change_cl* d) {
+inline void ele_init_cl(ele_cl* present, output_type_cl* x, float f_cl, change_cl* d) {
 	for (int i = 0; i < 3; i++)present->x_cl.position[i] = x->position[i];
 	for (int i = 0; i < 4; i++)present->x_cl.orientation[i] = x->orientation[i];
 	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++)present->x_cl.lig_torsion[i] = x->lig_torsion[i];
@@ -42,12 +41,12 @@ inline void visited_init(visited_cl* visited)
 	visited->index = 0;
 
 }
-inline bool add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl* change_v)
+inline void add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl* change_v)
 {
 	visited->tempf = f;
-	std_vector* tempx;
+	output_type_cl* tempx;
 	for (int i = 0; i < 3; i++)tempx->position[i] = conf_v->position[i];
-	for (int i = 0; i < 3; i++)tempx->orientation[i] = conf_v->orientation[i];
+	for (int i = 0; i < 4; i++)tempx->orientation[i] = conf_v->orientation[i];
 	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++)tempx->lig_torsion[i] = conf_v->lig_torsion[i];
 	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++)tempx->flex_torsion[i] = conf_v->flex_torsion[i];
 	ele_cl* e;
@@ -71,7 +70,7 @@ inline bool add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl*
 		visited->list_cl[visited->p] = e;
 		visited->p = (visited->p + 1) % (10 * visited->n_variable);
 	}
-	return true;
+	//return true;
 }
 bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* now_d, int neighbor)
 {
@@ -104,7 +103,7 @@ bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* n
 			}
 		}
 	}
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		bitMask = ONE << i;
 		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->orientation[i])) {
@@ -112,7 +111,7 @@ bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* n
 		}
 		else
 		{
-			const bool nowPositive = now_d->position[i] > 0;
+			const bool nowPositive = now_d->orientation[i] > 0;
 			const bool dPositive = visited->list_cl[neighbor]->d_positive & bitMask;
 			if (nowPositive ^ dPositive) {
 
@@ -209,7 +208,7 @@ bool interesting(output_type_cl *conf_v, float f, change_cl *g,visited_cl *visit
 		}
 		else {
 			float dist[SIZE_OF_LIST];
-			bool notPicked [SIZE_OF_LIST];
+			bool notPicked [SIZE_OF_LIST]; 
 			for (int i = 0; i < len; i++)
 			{
 				dist[i] = dist2_cl(conf_v, visited, i);
