@@ -139,6 +139,8 @@ void kernel2(	__global	m_cl*			m_cl_global,
 		// BFGS
 		output_type_cl best_out;
 		output_type_cl candidate;
+		visited_cl* visited;
+		visited_init(visited);
 
 		for (int step = 0; step < search_depth; step++) {
 			output_type_cl_init_with_output(&candidate, &tmp);
@@ -166,7 +168,8 @@ void kernel2(	__global	m_cl*			m_cl_global,
 					ig_cl_gpu,
 					hunt_cap_gpu,
 					epsilon_fl,
-					bfgs_max_steps
+					bfgs_max_steps,
+				    visited
 			);
 			
 			float n = generate_n(rand_maps_gpu->pi_map, map_index);
@@ -186,9 +189,11 @@ void kernel2(	__global	m_cl*			m_cl_global,
 							ig_cl_gpu,
 							authentic_v_gpu,
 							epsilon_fl,
-							bfgs_max_steps
+							bfgs_max_steps,
+						    visited
 					);
 					// set
+
 					if (tmp.e < best_e) {
 						set(&tmp, &m_cl_gpu.ligand.rigid, m_cl_gpu.m_coords.coords,
 							m_cl_gpu.atoms, m_cl_gpu.m_num_movable_atoms, epsilon_fl);

@@ -696,7 +696,8 @@ void bfgs(					output_type_cl*			x,
 					__constant	ig_cl*				ig_cl_gpu,
 			const	__global	float*				hunt_cap,
 			const				float				epsilon_fl,
-			const				int					max_steps
+			const				int					max_steps,
+	                          visited_cl*           visited
 ) 
 {
 	int n = 3 + 3 + x->lig_torsion_size; // the dimensions of matirx
@@ -712,8 +713,8 @@ void bfgs(					output_type_cl*			x,
 	output_type_cl_init_with_output(&x_new, x);
 
 
-	visited_cl *visited;
-	visited_init(visited);
+	//visited_cl *visited;
+	//visited_init(visited);
 	 
 	float f0 = m_eval_deriv(	x,
 								g,
