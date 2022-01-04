@@ -697,7 +697,8 @@ void bfgs(					output_type_cl*			x,
 			const	__global	float*				hunt_cap,
 			const				float				epsilon_fl,
 			const				int					max_steps,
-	                          visited_cl*           visited
+	                __private visited_cl*           visited
+	                         
 ) 
 {
 	int n = 3 + 3 + x->lig_torsion_size; // the dimensions of matirx
@@ -726,10 +727,14 @@ void bfgs(					output_type_cl*			x,
 							);
 	if (!interesting(x, f0, g, visited)) {
 		x->e = f0;
+	//bool b = !interesting(x, f0, g, visited);
+	//printf("%d\n",b);
 	}
 	else
 	{
 		add(visited, x, f0, g);
+		//printf("%d\n", visited->index);
+
 		float f_orig = f0;
 		// Init g_orig, x_orig
 		change_cl g_orig;
@@ -784,7 +789,7 @@ void bfgs(					output_type_cl*			x,
 			}
 
 			bool h_updated = bfgs_update(&h, &p, &y, alpha, epsilon_fl);
-			add(visited, x, f0, g);
+			//add(visited, x, f0, g);
 		}
 
 		if (!(f0 <= f_orig)) {

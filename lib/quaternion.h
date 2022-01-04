@@ -30,7 +30,7 @@
 #include "random.h"
 
 typedef boost::math::quaternion<fl> qt;
-
+bool quaternion_is_normalized(const qt& q);
 // non-intrusive free function split serialization
 namespace boost {
 	namespace serialization {
@@ -70,7 +70,7 @@ inline fl quaternion_norm_sqr(const qt& q) { // equivalent to sqr(boost::math::a
 	return sqr(q.R_component_1()) + sqr(q.R_component_2()) + sqr(q.R_component_3()) + sqr(q.R_component_4());
 }
 
-bool quaternion_is_normalized(const qt& q);
+
 
 inline void quaternion_normalize(qt& q) {
 	const fl s = quaternion_norm_sqr(q);

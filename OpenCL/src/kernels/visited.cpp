@@ -1,3 +1,4 @@
+//#include "kernel2.h"
 inline void ele_init_cl(ele_cl* present, output_type_cl* x, float f_cl, change_cl* d) {
 	for (int i = 0; i < 3; i++)present->x_cl.position[i] = x->position[i];
 	for (int i = 0; i < 4; i++)present->x_cl.orientation[i] = x->orientation[i];
@@ -33,31 +34,31 @@ inline void ele_init_cl(ele_cl* present, output_type_cl* x, float f_cl, change_c
 		else if (d->flex_torsion[i] > 0) present->d_positive |= bitMask;
 	}
 }
-inline void visited_init(visited_cl* visited)
+void visited_init(visited_cl* visited)
 {
 	visited->n_variable = 0;
 	visited->p = 0;
 	visited->full = false;
 	visited->index = 0;
-
 }
 inline void add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl* change_v)
 {
-	visited->tempf = f;
-	output_type_cl* tempx;
-	for (int i = 0; i < 3; i++)tempx->position[i] = conf_v->position[i];
-	for (int i = 0; i < 4; i++)tempx->orientation[i] = conf_v->orientation[i];
-	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++)tempx->lig_torsion[i] = conf_v->lig_torsion[i];
-	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++)tempx->flex_torsion[i] = conf_v->flex_torsion[i];
-	ele_cl* e;
-	ele_init_cl(e, tempx, f, change_v);
+	//visited->tempf = f;
+	//output_type_cl tempx;
+	//for (int i = 0; i < 3; i++)tempx.position[i] = conf_v->position[i];
+	//for (int i = 0; i < 4; i++)tempx.orientation[i] = conf_v->orientation[i];
+	//for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++)tempx.lig_torsion[i] = conf_v->lig_torsion[i];
+	//for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++)tempx.flex_torsion[i] = conf_v->flex_torsion[i];
+	//output_type_cl_init_with_output(&tempx, conf_v);
+	ele_cl e;
+	ele_init_cl(&e, conf_v, f, change_v);
 	if (visited->index == 0)
 	{
 		visited->n_variable = conf_v->lig_torsion_size;
 	}
 	if (!visited->full)
 	{
-		visited->list_cl[visited->index] = e;
+		visited->list_cl[visited->index] = &e;
 		visited->index++;
 		if (visited->index >= 10 * visited->n_variable)
 		{
@@ -67,12 +68,12 @@ inline void add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl*
 	}
 	else
 	{
-		visited->list_cl[visited->p] = e;
+		visited->list_cl[visited->p] = &e;
 		visited->p = (visited->p + 1) % (10 * visited->n_variable);
 	}
 	//return true;
 }
-bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* now_d, int neighbor)
+bool check(visited_cl* visited, output_type_cl* now_x, float now_f, change_cl* now_d, int neighbor)
 {
 	bool newXBigger, newYBigger;
 	const long ONE = 1;
@@ -82,9 +83,9 @@ bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* n
 	for (int i = 0; i < 3; i++)
 	{
 		bitMask = ONE << i;
-		if( (visited->list_cl[neighbor]->d_zero & bitMask) ||!(now_d->position[i])){
-			
-        }
+		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->position[i])) {
+
+		}
 		else
 		{
 			const bool nowPositive = now_d->position[i] > 0;
@@ -176,11 +177,11 @@ bool check(visited_cl* visited, output_type_cl *now_x, float now_f, change_cl* n
 		}
 	}
 }
-inline float dist2_cl(output_type_cl *now, visited_cl* visited, int neighbor) {
+inline float dist2_cl(output_type_cl* now, visited_cl* visited, int neighbor) {
 	float out = 0;
-	for (int i = 0; i < 3; i++){
+	for (int i = 0; i < 3; i++) {
 		float d = visited->list_cl[neighbor]->x_cl.position[i] - now->position[i];
-	    out += d * d;
+		out += d * d;
 	}
 	for (int i = 0; i < 4; i++) {
 		float d = visited->list_cl[neighbor]->x_cl.orientation[i] - now->orientation[i];
@@ -196,7 +197,7 @@ inline float dist2_cl(output_type_cl *now, visited_cl* visited, int neighbor) {
 	}
 	return out;
 }
-bool interesting(output_type_cl *conf_v, float f, change_cl *g,visited_cl *visited)
+bool interesting(output_type_cl* conf_v, float f, change_cl* g, visited_cl* visited)
 {
 	int len = visited->index;
 	if (visited->index == 0) {
@@ -208,7 +209,7 @@ bool interesting(output_type_cl *conf_v, float f, change_cl *g,visited_cl *visit
 		}
 		else {
 			float dist[SIZE_OF_LIST];
-			bool notPicked [SIZE_OF_LIST]; 
+			bool notPicked[SIZE_OF_LIST];
 			for (int i = 0; i < len; i++)
 			{
 				dist[i] = dist2_cl(conf_v, visited, i);
@@ -235,4 +236,3 @@ bool interesting(output_type_cl *conf_v, float f, change_cl *g,visited_cl *visit
 	}
 	return true;
 }
-

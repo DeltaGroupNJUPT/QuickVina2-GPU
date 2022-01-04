@@ -137,10 +137,10 @@ void kernel2(	__global	m_cl*			m_cl_global,
 		output_type_cl_init(&tmp, rand_molec_struc_vec_gpu + gll * (SIZE_OF_MOLEC_STRUC / sizeof(float)));
 		g.lig_torsion_size = tmp.lig_torsion_size;
 		// BFGS
-		output_type_cl best_out;
 		output_type_cl candidate;
-		visited_cl* visited;
-		visited_init(visited);
+		output_type_cl best_out;
+		__private visited_cl visited;
+		visited_init(&visited);
 
 		for (int step = 0; step < search_depth; step++) {
 			output_type_cl_init_with_output(&candidate, &tmp);
@@ -169,8 +169,18 @@ void kernel2(	__global	m_cl*			m_cl_global,
 					hunt_cap_gpu,
 					epsilon_fl,
 					bfgs_max_steps,
-				    visited
+				    &visited
 			);
+		//	bfgs(&candidate,
+			//	&g,
+			//	&m_cl_gpu,
+			//	p_cl_gpu,
+			//	ig_cl_gpu,
+			//	hunt_cap_gpu,
+			//	epsilon_fl,
+			//	bfgs_max_steps,
+			//	visited
+			//);
 			
 			float n = generate_n(rand_maps_gpu->pi_map, map_index);
 			
@@ -190,7 +200,7 @@ void kernel2(	__global	m_cl*			m_cl_global,
 							authentic_v_gpu,
 							epsilon_fl,
 							bfgs_max_steps,
-						    visited
+						    &visited
 					);
 					// set
 
