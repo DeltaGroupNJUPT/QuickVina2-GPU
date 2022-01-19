@@ -726,9 +726,8 @@ void bfgs(					output_type_cl*			x,
 								epsilon_fl
 							);
 	if (!interesting(x, f0, g, visited)) {
+		//return f0;
 		x->e = f0;
-	//bool b = !interesting(x, f0, g, visited);
-	//printf("%d\n",b);
 	}
 	else
 	{
@@ -778,18 +777,19 @@ void bfgs(					output_type_cl*			x,
 			f_values[step + 1] = f1;
 			f0 = f1;
 			output_type_cl_init_with_output(x, &x_new);
+			
 			if (!(sqrt(scalar_product(g, g, n)) >= 1e-5))break;
 			change_cl_init_with_change(g, &g_new);
-
 			if (step == 0) {
 				float yy = scalar_product(&y, &y, n);
 				if (fabs(yy) > epsilon_fl) {
 					matrix_set_diagonal(&h, alpha * scalar_product(&y, &p, n) / yy);
 				}
 			}
-
+            
 			bool h_updated = bfgs_update(&h, &p, &y, alpha, epsilon_fl);
-			//add(visited, x, f0, g);
+			add(visited, x, f0, g);
+			//printf("%d\n", visited->index);
 		}
 
 		if (!(f0 <= f_orig)) {
@@ -799,6 +799,7 @@ void bfgs(					output_type_cl*			x,
 		}
 
 		// write output_type_cl energy
-		x->e = f0;
+		//return f0;
+			x->e = f0;
 	}
 }

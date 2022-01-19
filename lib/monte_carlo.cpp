@@ -558,12 +558,18 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	/****************************   Start kernel    ***************************/
 	/**************************************************************************/
 	size_t global_size[2] = { 512, 32 };
-	size_t local_size[2] = { 16,8 };
+    size_t local_size[2] = {16,8};
+	//size_t global_size[2] = { 1024, 64 };
+	///size_t local_size[2] = { 32,16 };
+	
 
 	cl_event monte_clarlo_cl;
 	err = clEnqueueNDRangeKernel(queue, kernels[0], 2, 0, global_size, local_size, 0, NULL, &monte_clarlo_cl); checkErr(err);
 
 	clWaitForEvents(1, &monte_clarlo_cl);
+
+	//clFinish(queue);
+	err=clFinish(queue);
 
 	// Maping result data
 	output_type_cl* result_ptr = (output_type_cl*)clEnqueueMapBuffer(queue, results, CL_TRUE, CL_MAP_READ,

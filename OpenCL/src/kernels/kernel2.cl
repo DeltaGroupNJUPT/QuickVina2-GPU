@@ -161,7 +161,7 @@ void kernel2(	__global	m_cl*			m_cl_global,
 							mutation_amplitude
 			);
 			
-			bfgs(	&candidate,
+			bfgs(&candidate,
 					&g,
 					&m_cl_gpu,
 					p_cl_gpu,
@@ -171,16 +171,6 @@ void kernel2(	__global	m_cl*			m_cl_global,
 					bfgs_max_steps,
 				    &visited
 			);
-		//	bfgs(&candidate,
-			//	&g,
-			//	&m_cl_gpu,
-			//	p_cl_gpu,
-			//	ig_cl_gpu,
-			//	hunt_cap_gpu,
-			//	epsilon_fl,
-			//	bfgs_max_steps,
-			//	visited
-			//);
 			
 			float n = generate_n(rand_maps_gpu->pi_map, map_index);
 			
@@ -192,7 +182,7 @@ void kernel2(	__global	m_cl*			m_cl_global,
 					m_cl_gpu.atoms, m_cl_gpu.m_num_movable_atoms, epsilon_fl);
 				
 				if (tmp.e < best_e) {
-					bfgs(	&tmp,
+					bfgs(&tmp,
 							&g,
 							&m_cl_gpu,
 							p_cl_gpu,

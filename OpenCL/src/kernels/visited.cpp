@@ -23,16 +23,22 @@ inline void ele_init_cl(ele_cl* present, output_type_cl* x, float f_cl, change_c
 		if (d->orientation[i] == 0) present->d_zero |= bitMask;
 		else if (d->orientation[i] > 0) present->d_positive |= bitMask;
 	}
-	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++) {
-		bitMask = ONE << i;
-		if (d->lig_torsion[i] == 0) present->d_zero |= bitMask;
-		else if (d->orientation[i] > 0) present->d_positive |= bitMask;
+	for (int i = 0; i < x->lig_torsion_size; i++) {
+			bitMask = ONE << i;
+			if (d->lig_torsion[i] == 0) present->d_zero |= bitMask;
+			else if (d->lig_torsion[i] > 0) present->d_positive |= bitMask;
 	}
-	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++) {
-		bitMask = ONE << i;
-		if (d->flex_torsion[i] == 0) present->d_zero |= bitMask;
-		else if (d->flex_torsion[i] > 0) present->d_positive |= bitMask;
-	}
+	//for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++) {
+	//	bitMask = ONE << i;
+	//	if (d->lig_torsion[i] == 0) present->d_zero |= bitMask;
+	//	else if (d->orientation[i] > 0) present->d_positive |= bitMask;
+	//}
+
+	//for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++) {
+	//	bitMask = ONE << i;
+	//	if (d->flex_torsion[i] == 0) present->d_zero |= bitMask;
+	//	else if (d->flex_torsion[i] > 0) present->d_positive |= bitMask;
+	//}
 }
 void visited_init(visited_cl* visited)
 {
@@ -54,7 +60,7 @@ inline void add(visited_cl* visited, output_type_cl* conf_v, float f, change_cl*
 	ele_init_cl(&e, conf_v, f, change_v);
 	if (visited->index == 0)
 	{
-		visited->n_variable = conf_v->lig_torsion_size;
+		visited->n_variable = conf_v->lig_torsion_size+6;
 	}
 	if (!visited->full)
 	{
@@ -128,7 +134,7 @@ bool check(visited_cl* visited, output_type_cl* now_x, float now_f, change_cl* n
 			}
 		}
 	}
-	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++)
+	for (int i = 0; i < now_d->lig_torsion_size; i++)
 	{
 		bitMask = ONE << i;
 		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->lig_torsion[i])) {
@@ -152,30 +158,7 @@ bool check(visited_cl* visited, output_type_cl* now_x, float now_f, change_cl* n
 			}
 		}
 	}
-	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++)
-	{
-		bitMask = ONE << i;
-		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->flex_torsion[i])) {
-
-		}
-		else
-		{
-			const bool nowPositive = now_d->position[i] > 0;
-			const bool dPositive = visited->list_cl[neighbor]->d_positive & bitMask;
-			if (nowPositive ^ dPositive) {
-
-			}
-			else {
-				newXBigger = (now_x->flex_torsion[i] - visited->list_cl[neighbor]->x_cl.flex_torsion[i]) > 0;
-				if (nowPositive ? (newXBigger ^ newYBigger) : (!(newXBigger ^ newYBigger))) {
-
-				}
-				else {
-					return false;
-				}
-			}
-		}
-	}
+	
 }
 inline float dist2_cl(output_type_cl* now, visited_cl* visited, int neighbor) {
 	float out = 0;
@@ -187,12 +170,8 @@ inline float dist2_cl(output_type_cl* now, visited_cl* visited, int neighbor) {
 		float d = visited->list_cl[neighbor]->x_cl.orientation[i] - now->orientation[i];
 		out += d * d;
 	}
-	for (int i = 0; i < MAX_NUM_OF_LIG_TORSION; i++) {
+	for (int i = 0; i < now->lig_torsion_size; i++) {
 		float d = visited->list_cl[neighbor]->x_cl.lig_torsion[i] - now->lig_torsion[i];
-		out += d * d;
-	}
-	for (int i = 0; i < MAX_NUM_OF_FLEX_TORSION; i++) {
-		float d = visited->list_cl[neighbor]->x_cl.flex_torsion[i] - now->flex_torsion[i];
 		out += d * d;
 	}
 	return out;
@@ -210,18 +189,22 @@ bool interesting(output_type_cl* conf_v, float f, change_cl* g, visited_cl* visi
 		else {
 			float dist[SIZE_OF_LIST];
 			bool notPicked[SIZE_OF_LIST];
+
+
 			for (int i = 0; i < len; i++)
 			{
 				dist[i] = dist2_cl(conf_v, visited, i);
 			}
+
+
 			bool flag = false;
 			float min = 1e10;
 			int p = 0;
-			const int maxCheck = 2 * visited->n_variable;
+			const int maxCheck = visited->n_variable;//meiwenti
 			for (int i = 0; i < maxCheck; i++)
 			{
 				min = 1e10;
-				for (int j = 0; i < len; j++) {
+				for (int j = 0; j < len; j++) {
 					if (notPicked[j] && (dist[j] < min)) {
 						p = j;
 						min = dist[j];
