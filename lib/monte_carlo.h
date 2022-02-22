@@ -27,7 +27,7 @@
 #include "incrementable.h"
 #include "commonMacros.h"
 
-extern double bfgs_count;
+
 
 struct monte_carlo {
 	unsigned num_steps;

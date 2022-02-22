@@ -29,7 +29,14 @@
 #include "wrapcl.h"
 #include "random.h"
 #include <iostream>
+
 #include <fstream>
+#include <boost/progress.hpp>
+#include <thread>
+#include <parallel_progress.cpp>
+//#include <parallel_progress.cpp>
+//#include <boost/smart_ptr/detail/sp_win32_sleep.hpp>
+
 
 
 //#define DISPLAY_ANALYSIS
@@ -104,7 +111,6 @@ std::vector<output_type> monte_carlo::cl_to_vina(output_type_cl result_ptr[], in
 		// Orientation
 		qt q(tmp_cl.orientation[0], tmp_cl.orientation[1], tmp_cl.orientation[2], tmp_cl.orientation[3]);
 		tmp_c.ligands[0].rigid.orientation = q;
-		// ππ‘Ïoutput_type
 		output_type tmp_vina(tmp_c, tmp_cl.e);
 		// torsion
 		for (int j = 0; j < tmp_cl.lig_torsion_size; j++)tmp_vina.c.ligands[0].torsions.push_back(tmp_cl.lig_torsion[j]);
@@ -192,13 +198,37 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
   		}
 		
  	}
-#ifdef DATA_DISTRIBUTION_TEST
-	f1.close();
-#endif	
 	VINA_CHECK(!out.empty());
 	VINA_CHECK(out.front().e <= out.back().e); // make sure the sorting worked in the correct order
 }
 #else
+
+volatile bool finished = false;
+void print_process() {
+	int count = 0;
+	printf("\n");
+	do
+	{
+#ifdef WIN32
+		Sleep(100);
+#else
+		sleep(1);
+#endif
+		printf("\rPerform docking|");
+		for (int i = 0; i < count; i++)printf(" ");
+		printf("=======");
+		for (int i = 0; i < 30 - count; i++)printf(" ");
+		printf("|"); fflush(stdout);
+
+		count++;
+		count %= 30;
+	} while (finished != true);
+	printf("\rPerform docking|");
+	for (int i = 0; i < 16; i++)printf("=");
+	printf("done");
+	for (int i = 0; i < 17; i++)printf("=");
+	printf("|\n"); fflush(stdout);
+}
 void monte_carlo::operator()(model& m, output_container& out, const precalculate& p, const igrid& ig, const precalculate& p_widened, const igrid& ig_widened, const vec& corner1, const vec& corner2, incrementable* increment_me, rng& generator) const {
 	/**************************************************************************/
 	/***************************    OpenCL Init    ****************************/
@@ -246,6 +276,11 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	SetupBuildProgramWithSource(program_cl, NULL, devices, include_path, addtion);
 	SaveProgramToBinary(program_cl, "Kernel2_Opt.bin");
 //#endif
+
+
+	//Display the progress
+	printf("\nSearch depth is set to %d", search_depth);
+	std::thread console_thread(print_process);
 	program_cl = SetupBuildProgramWithBinary(context, devices, "Kernel2_Opt.bin");
 	err = clUnloadPlatformCompiler(platforms[gpu_platform_id]); checkErr(err);
 	//Set kernel arguments
@@ -560,7 +595,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	size_t global_size[2] = { 512, 32 };
     size_t local_size[2] = {16,8};
 	//size_t global_size[2] = { 1024, 64 };
-	///size_t local_size[2] = { 32,16 };
+	//size_t local_size[2] = { 32,16 };
 	
 
 	cl_event monte_clarlo_cl;
@@ -603,6 +638,10 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	free(ig_cl_ptr);
 	free(rand_maps);
 	for (int i = 0; i < thread; i++)free(rand_molec_struc_vec[i]);
+
+	finished = true;
+	console_thread.join(); // wait the thread finish
+
 #ifdef DISPLAY_ANALYSIS
 	// Output Analysis
 	cl_ulong time_start, time_end;

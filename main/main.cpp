@@ -44,13 +44,14 @@
 #include "quasi_newton.h"
 #include "tee.h"
 #include "coords.h" // add_to_output_container
-//#include <ctime>
 
+//end OpenCL Related
 using boost::filesystem::path;
 using namespace boost::posix_time;
 
 path make_path(const std::string& str) {
-	return path(str, boost::filesystem::native);
+	//return path(str, boost::filesystem::native);
+	return path(str);
 }
 
 void doing(int verbosity, const std::string& str, tee& log) {
@@ -215,22 +216,22 @@ void do_search(model& m, const boost::optional<model>& ref, const scoring_functi
 		output_container out_cont;
 
 //		time_t start,end;
-		doing(verbosity, "Performing search", log);
+		//doing(verbosity, "Performing search", log);
 		ptime time_start(microsec_clock::local_time());
 //		time(&start);
 
 		par(m, out_cont, prec, ig, prec_widened, ig_widened, corner1, corner2, generator);
-		done(verbosity, log);
-
+		//done(verbosity, log);
+		std::cout << std::endl;
 		doing(verbosity, "Refining results", log);
 		VINA_FOR_IN(i, out_cont)
 			refine_structure(m, prec, nc, out_cont[i], authentic_v, par.mc.ssd_par.evals);
 
-		ptime time_end(microsec_clock::local_time());
-		time_duration duration(time_end - time_start);
+		//ptime time_end(microsec_clock::local_time());
+		//time_duration duration(time_end - time_start);
 //		time(&end);
 //		printf("\nsearching finished in %.3lf seconds\n",difftime(end,start));
-		printf("\nsearching finished in %.3lf seconds\n",(duration.total_milliseconds()/1000.0));
+		//printf("\nsearching finished in %.3lf seconds\n",(duration.total_milliseconds()/1000.0));
 
 		if(!out_cont.empty()) {
 			out_cont.sort();
@@ -313,6 +314,7 @@ void main_procedure(model& m, const boost::optional<model>& ref, // m is non-con
 	parallel_mc par;
 	sz heuristic = m.num_movable_atoms() + 10 * m.get_size().num_degrees_of_freedom();
 	par.mc.num_steps = unsigned(70 * 3 * (50 + heuristic) / 2); // 2 * 70 -> 8 * 20 // FIXME
+	par.mc.search_depth = search_depth;// 20210811 Glinttsd
 	if (search_depth != 0) {
 		par.mc.search_depth = search_depth;
 		assert(search_depth >= 1);
@@ -321,7 +323,7 @@ void main_procedure(model& m, const boost::optional<model>& ref, // m is non-con
 		par.mc.search_depth = (int)(0.24 * m.num_movable_atoms() + 0.29 * m.get_size().num_degrees_of_freedom() - 5.74);
 		if (par.mc.search_depth < 1) par.mc.search_depth = 1;
 	}
-	std::cout << "Search depth is set to " << par.mc.search_depth << std::endl;
+	//std::cout << "Search depth is set to " << par.mc.search_depth << std::endl;
 	par.mc.thread = thread;// 20210811 Glinttsd
 
 	par.mc.ssd_par.evals = unsigned((25 + m.num_movable_atoms()) / 3);
@@ -426,6 +428,8 @@ model parse_bundle(const boost::optional<std::string>& rigid_name_opt, const boo
 }
 
 int main(int argc, char* argv[]) {
+	clock_t start = clock();
+
 	using namespace boost::program_options;
 	const std::string version_string = "QuickVina2-GPU";
 	const std::string error_message = "\n\n\
@@ -733,4 +737,7 @@ Thank you!\n";
 		std::cerr << "\n\nAn unknown error occurred. " << error_message;
 		return 1;
 	}
+	clock_t end = clock();
+	std::cout << "Vina-GPU total runtime = " << (double)(end - start) / CLOCKS_PER_SEC << " s" << std::endl;
+	//getchar();
 }

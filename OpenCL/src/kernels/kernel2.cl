@@ -42,19 +42,19 @@ void get_heavy_atom_movable_coords( output_type_cl* tmp, const m_cl* m_cl_gpu) {
 	}
 }
 
-// Bubble Sort
-void container_sort(out_container* out) {
-	output_type_cl out_tmp;
-	for (int i = 0; i < out->current_size - 1; i++) {
-		for (int j = 0; j < out->current_size - 1 - i; j++) {
-			if (out->container[j].e > out->container[j + 1].e) {
-				output_type_cl_init_with_output(&out_tmp, &out->container[j]);
-				output_type_cl_init_with_output(&out->container[j], &out->container[j+1]);
-				output_type_cl_init_with_output(&out->container[j + 1], &out_tmp);
-			}
-		}
-	}
-}
+// Bubble Sort 2022/1/24
+//void container_sort(out_container* out) {
+//	output_type_cl out_tmp;
+//	for (int i = 0; i < out->current_size - 1; i++) {
+//		for (int j = 0; j < out->current_size - 1 - i; j++) {
+//			if (out->container[j].e > out->container[j + 1].e) {
+//				output_type_cl_init_with_output(&out_tmp, &out->container[j]);
+//				output_type_cl_init_with_output(&out->container[j], &out->container[j+1]);
+//				output_type_cl_init_with_output(&out->container[j + 1], &out_tmp);
+//			}
+//		}
+//	}
+//}
 
 
 void add_to_output_container(out_container* out, const output_type_cl* tmp) {
@@ -126,7 +126,7 @@ void kernel2(	__global	m_cl*			m_cl_global,
 			 gll += total_wi
 		)
 	{
-		if (gll % 100 == 0)printf("\nThread %d START", gll);
+		//if (gll % 100 == 0)printf("\nThread %d START", gll);2022/1/24
 
 		m_cl m_cl_gpu;
 		m_cl_init_with_m_cl(m_cl_global, &m_cl_gpu);
@@ -210,6 +210,6 @@ void kernel2(	__global	m_cl*			m_cl_global,
 
 		// write the best conformation back to CPU
 		write_back(&results[gll], &best_out);
-		if (gll % 100 == 0)printf("\nThread %d FINISH", gll);
+		//if (gll % 100 == 0)printf("\nThread %d FINISH", gll);2022/1/24
 	}
 }
