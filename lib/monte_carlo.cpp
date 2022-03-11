@@ -35,7 +35,7 @@
 #include <thread>
 #include <parallel_progress.cpp>
 //#include <parallel_progress.cpp>
-//#include <boost/smart_ptr/detail/sp_win32_sleep.hpp>
+#include <boost/smart_ptr/detail/sp_win32_sleep.hpp>
 
 
 
@@ -249,7 +249,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	cl_program program;
 	size_t program_size;
 	//Read kernel source code
-//#ifdef BUILD_KERNEL_FROM_SOURCE
+#ifdef BUILD_KERNEL_FROM_SOURCE
 
 	const std::string default_work_path = ".";
 	const std::string include_path = default_work_path + "/OpenCL/inc";
@@ -276,12 +276,12 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	program_cl = clCreateProgramWithSource(context, 1, (const char**)&final_files_char, &final_size, &err); checkErr(err);
 	SetupBuildProgramWithSource(program_cl, NULL, devices, include_path, addtion);
 	SaveProgramToBinary(program_cl, "Kernel2_Opt.bin");
-//#endif
+#endif
 
 
 	//Display the progress
 	printf("\nSearch depth is set to %d", search_depth);
-	std::thread console_thread(print_process);
+	//std::thread console_thread(print_process);
 	program_cl = SetupBuildProgramWithBinary(context, devices, "Kernel2_Opt.bin");
 	err = clUnloadPlatformCompiler(platforms[gpu_platform_id]); checkErr(err);
 	//Set kernel arguments
@@ -579,7 +579,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	SetKernelArg(kernels[0], 2, sizeof(cl_mem), &p_cl_gpu);
 	SetKernelArg(kernels[0], 3, sizeof(cl_mem), &rand_molec_struc_vec_gpu);
 	SetKernelArg(kernels[0], 4, sizeof(cl_mem), &best_e_gpu);
-	SetKernelArg(kernels[0], 5, sizeof(size_t), &quasi_newton_par_max_steps);
+	SetKernelArg(kernels[0], 5, sizeof(int), &quasi_newton_par_max_steps);
 	SetKernelArg(kernels[0], 6, sizeof(unsigned), &num_steps);
 	SetKernelArg(kernels[0], 7, sizeof(float), &mutation_amplitude_float);
 	SetKernelArg(kernels[0], 8, sizeof(cl_mem), &rand_maps_gpu);
@@ -604,8 +604,8 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 
 	clWaitForEvents(1, &monte_clarlo_cl);
 
-	finished = true;
-	console_thread.join(); // wait the thread finish 
+	//finished = true;
+	//console_thread.join(); // wait the thread finish 
 
 	//clFinish(queue);
 	err=clFinish(queue);
@@ -653,7 +653,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	err = clGetEventProfilingInfo(monte_clarlo_cl, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL); checkErr(err);
 	err = clGetEventProfilingInfo(monte_clarlo_cl, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL); checkErr(err);
 	total_time = time_end - time_start;
-	printf("GPU monte carlo runtime: %0.3f s", (total_time / 1000000000.0));
+	printf("\n GPU monte carlo runtime: %0.3f s", (total_time / 1000000000.0));
 	std::ofstream file("gpu_runtime.txt");
 	if (file.is_open())
 	{

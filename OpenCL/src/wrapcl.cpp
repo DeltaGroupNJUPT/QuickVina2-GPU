@@ -446,4 +446,5 @@ void CreateDeviceBuffer(cl_mem* mem, cl_mem_flags flag, size_t size, cl_context 
 void SetKernelArg(cl_kernel kernel, cl_uint num, size_t size, const void *ptr) {
     cl_int err;
     err = clSetKernelArg(kernel, num, size, ptr); checkErr(err);
+   
 }

@@ -599,7 +599,14 @@ void minus_mat_vec_product(	const		matrix*		h,
 		find_change_index_write(out, i, -sum);
 	}
 }
-
+/*float min_wolfe(float a, float b) {
+ if (a < b)
+ {
+  return a;
+ }
+ else
+  return b;
+}*/
 
 inline float scalar_product(	const	change_cl*			a,
 								const	change_cl*			b,
@@ -611,14 +618,6 @@ inline float scalar_product(	const	change_cl*			a,
 	}
 	return tmp;
 }
-/*float min_wolfe(float a, float b) {
-	if (a < b)
-	{
-		return a;
-	}
-	else
-		return b;
-}*/
 
 
 float line_search(					 	m_cl*				m_cl_gpu,
@@ -651,38 +650,39 @@ float line_search(					 	m_cl*				m_cl_gpu,
 
 		output_type_cl_increment(x_new, p, alpha, epsilon_fl);
 
-		*f1 = m_eval_deriv(x_new,
-			g_new,
-			m_cl_gpu,
-			p_cl_gpu,
-			ig_cl_gpu,
-			hunt_cap,
-			epsilon_fl
-		);
+		*f1 =  m_eval_deriv(x_new,
+							g_new,
+							m_cl_gpu,
+							p_cl_gpu,
+							ig_cl_gpu,
+							hunt_cap,
+							epsilon_fl
+							);
+
 		if (*f1 - f0 < c0 * alpha * pg)
 			break;
 		alpha *= multiplier;
 	}
 	return alpha;
 }
-	/*	if (*f1 - f0 < c0 * alpha * pg)
-		{
-			if (scalar_product(p, g_new, n) >= c1 * pg)
-			{
-				break;
-			}
-			else
-			{
-				alpha = min_wolfe(2 * alpha, (alpha + b) * multiplier);
-			}
-		}
-		else 
-		{
-			b = alpha;
-			alpha *= multiplier;
-		}
-	}
-	return alpha;
+    /*if (*f1 - f0 < c0 * alpha * pg)
+    {
+    if (scalar_product(p, g_new, n) >= c1 * pg)
+    {
+      break;
+    }
+     else
+     {
+       alpha = min_wolfe(2 * alpha, (alpha + b) * multiplier);
+     }
+     }
+    else
+    {
+     b = alpha;
+     alpha *= multiplier;
+     }
+     }
+    return alpha;
 }*/
 
 

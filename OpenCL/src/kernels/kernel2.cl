@@ -211,5 +211,6 @@ void kernel2(	__global	m_cl*			m_cl_global,
 		// write the best conformation back to CPU
 		write_back(&results[gll], &best_out);
 		//if (gll % 100 == 0)printf("\nThread %d FINISH", gll);2022/1/24
+		
 	}
 }
