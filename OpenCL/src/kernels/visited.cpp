@@ -89,7 +89,7 @@ bool check(visited_cl* visited, output_type_cl* now_x, float now_f, change_cl* n
 	for (int i = 0; i < 3; i++)
 	{
 		bitMask = ONE << i;
-		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->position[i])) {
+		if ((visited->list_cl[neighbor]->d_zero & bitMask) || !(now_d->position[i])) { //最容易判断的放前面 2022.02.24
 
 		}
 		else

@@ -229,6 +229,7 @@ void print_process() {
 	for (int i = 0; i < 17; i++)printf("=");
 	printf("|\n"); fflush(stdout);
 }
+
 void monte_carlo::operator()(model& m, output_container& out, const precalculate& p, const igrid& ig, const precalculate& p_widened, const igrid& ig_widened, const vec& corner1, const vec& corner2, incrementable* increment_me, rng& generator) const {
 	/**************************************************************************/
 	/***************************    OpenCL Init    ****************************/
@@ -288,10 +289,10 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	char kernel_name[][50] = { "kernel2" };
 	SetupKernel(kernels, program_cl, 1, kernel_name);
 
-	int max_wg_size; // max work item within one work group
-	int max_wi_size[3]; // max work item within each dimension(global)
-	err = clGetDeviceInfo(devices[0], CL_DEVICE_MAX_WORK_GROUP_SIZE, sizeof(int), &max_wg_size, NULL); checkErr(err);
-	err = clGetDeviceInfo(devices[0], CL_DEVICE_MAX_WORK_ITEM_SIZES, 3 * sizeof(int), &max_wi_size, NULL); checkErr(err);
+	size_t max_wg_size; // max work item within one work group
+	size_t max_wi_size[3]; // max work item within each dimension(global)
+	err = clGetDeviceInfo(devices[0], CL_DEVICE_MAX_WORK_GROUP_SIZE, sizeof(size_t), &max_wg_size, NULL); checkErr(err);
+	err = clGetDeviceInfo(devices[0], CL_DEVICE_MAX_WORK_ITEM_SIZES, 3 * sizeof(size_t), &max_wi_size, NULL); checkErr(err);
 	/**************************************************************************/
 	/*********    Generate random seeds (depend on exhaustiveness)    *********/
 	/**************************************************************************/
@@ -581,7 +582,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	SetKernelArg(kernels[0], 5, sizeof(size_t), &quasi_newton_par_max_steps);
 	SetKernelArg(kernels[0], 6, sizeof(unsigned), &num_steps);
 	SetKernelArg(kernels[0], 7, sizeof(float), &mutation_amplitude_float);
-	SetKernelArg(kernels[0], 8, sizeof(int), &rand_maps_gpu);
+	SetKernelArg(kernels[0], 8, sizeof(cl_mem), &rand_maps_gpu);
 	SetKernelArg(kernels[0], 9, sizeof(float), &epsilon_fl_float);
 	SetKernelArg(kernels[0], 10, sizeof(cl_mem), &hunt_cap_gpu);
 	SetKernelArg(kernels[0], 11, sizeof(cl_mem), &authentic_v_gpu);
@@ -603,6 +604,9 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 
 	clWaitForEvents(1, &monte_clarlo_cl);
 
+	finished = true;
+	console_thread.join(); // wait the thread finish 
+
 	//clFinish(queue);
 	err=clFinish(queue);
 
@@ -612,6 +616,9 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 		0, NULL, NULL, &err); checkErr(err);
 
 	std::vector<output_type> result_vina = cl_to_vina(result_ptr, thread);
+	if (result_vina.size() == 0) {
+		printf("Error in the device part\n"); exit(-1);
+	}
 
 	// Unmaping result data
 	err = clEnqueueUnmapMemObject(queue, results, result_ptr, 0, NULL, NULL); checkErr(err);
@@ -639,8 +646,20 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	free(rand_maps);
 	for (int i = 0; i < thread; i++)free(rand_molec_struc_vec[i]);
 
-	finished = true;
-	console_thread.join(); // wait the thread finish
+	
+	// Output Analysis
+	cl_ulong time_start, time_end;
+	double total_time;
+	err = clGetEventProfilingInfo(monte_clarlo_cl, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL); checkErr(err);
+	err = clGetEventProfilingInfo(monte_clarlo_cl, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL); checkErr(err);
+	total_time = time_end - time_start;
+	printf("GPU monte carlo runtime: %0.3f s", (total_time / 1000000000.0));
+	std::ofstream file("gpu_runtime.txt");
+	if (file.is_open())
+	{
+		file << "GPU monte carlo runtime=" << (total_time / 1000000000.0) << "s" << std::endl;
+		file.close();
+	}
 
 #ifdef DISPLAY_ANALYSIS
 	// Output Analysis

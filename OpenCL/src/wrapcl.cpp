@@ -2,8 +2,7 @@
 #include <iostream>
 //#define DISPLAY_SUCCESS
 //#define DISPLAY_ADDITION_INFO
-#define NVIDIA_PLATFORM
-#define OPENCL_1_2
+
 
 const char* getErrorString(cl_int error)
 {

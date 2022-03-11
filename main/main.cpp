@@ -453,13 +453,13 @@ Thank you!\n";
 
 	const std::string cite_message = "\
 ############################################################################\n\
-# If you used QuickVina2-GPU in your work, please cite:                      #\n\
+# If you used QuickVina2-GPU in your work, please cite:                    #\n\
 #                                                                          #\n\
-# Wang Lingyue, Shidi£¬Tang, Huang Qinqin,                                #\n\
-# Hu Haifeng, Wu Jiansheng£¬and Zhu Yanxiang,.                                                                          #\n\
+# Wang Lingyue, Shidi£¬Tang, Huang Qinqin,                                 #\n\
+# Hu Haifeng, Wu Jiansheng£¬and Zhu Yanxiang,.                             #\n\
 # Fast, Accurate, and Reliable Molecular Docking with QuickVina 2,         #\n\
 # Bioinformatics (2015), doi: 10.1093/bioinformatics/btv082                #\n\
-# Accelerating Quick Vina2 with GPUs. ChemRxiv (2021).Print.                                                                          #\n\
+# Accelerating Quick Vina2 with GPUs. ChemRxiv (2021).Print.               #\n\
 # and original AutoDock Vina paper:                                        #\n\
 # O. Trott, A. J. Olson,                                                   #\n\
 # AutoDock Vina: improving the speed and accuracy of docking with a        #\n\
@@ -738,6 +738,12 @@ Thank you!\n";
 		return 1;
 	}
 	clock_t end = clock();
+	std::ofstream file("gpu_runtime.txt", std::ios::app);
+	if (file.is_open())
+	{
+		file<<"GPU total runtime=" << (double)(end - start) / CLOCKS_PER_SEC << " s" << std::endl;
+		file.close();
+	}
 	std::cout << "Vina-GPU total runtime = " << (double)(end - start) / CLOCKS_PER_SEC << " s" << std::endl;
 	//getchar();
 }

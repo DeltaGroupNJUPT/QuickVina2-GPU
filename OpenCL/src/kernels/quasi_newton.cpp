@@ -611,6 +611,14 @@ inline float scalar_product(	const	change_cl*			a,
 	}
 	return tmp;
 }
+/*float min_wolfe(float a, float b) {
+	if (a < b)
+	{
+		return a;
+	}
+	else
+		return b;
+}*/
 
 
 float line_search(					 	m_cl*				m_cl_gpu,
@@ -628,9 +636,12 @@ float line_search(					 	m_cl*				m_cl_gpu,
 					const	__global	float*				hunt_cap
 ) {
 	const float c0 = 0.0001;
+	const float c1 = 0.9;
 	const int max_trials = 10;
 	const float multiplier = 0.5;
 	float alpha = 1;
+	float a = 0;
+	float b = 15;
 
 	const float pg = scalar_product(p, g, n);
 
@@ -640,21 +651,39 @@ float line_search(					 	m_cl*				m_cl_gpu,
 
 		output_type_cl_increment(x_new, p, alpha, epsilon_fl);
 
-		*f1 =  m_eval_deriv(x_new,
-							g_new,
-							m_cl_gpu,
-							p_cl_gpu,
-							ig_cl_gpu,
-							hunt_cap,
-							epsilon_fl
-							);
-
+		*f1 = m_eval_deriv(x_new,
+			g_new,
+			m_cl_gpu,
+			p_cl_gpu,
+			ig_cl_gpu,
+			hunt_cap,
+			epsilon_fl
+		);
 		if (*f1 - f0 < c0 * alpha * pg)
 			break;
 		alpha *= multiplier;
 	}
 	return alpha;
 }
+	/*	if (*f1 - f0 < c0 * alpha * pg)
+		{
+			if (scalar_product(p, g_new, n) >= c1 * pg)
+			{
+				break;
+			}
+			else
+			{
+				alpha = min_wolfe(2 * alpha, (alpha + b) * multiplier);
+			}
+		}
+		else 
+		{
+			b = alpha;
+			alpha *= multiplier;
+		}
+	}
+	return alpha;
+}*/
 
 
 bool bfgs_update(			matrix*			h,
@@ -779,7 +808,7 @@ void bfgs(					output_type_cl*			x,
 			output_type_cl_init_with_output(x, &x_new);
 			
 			if (!(sqrt(scalar_product(g, g, n)) >= 1e-5))break;
-			change_cl_init_with_change(g, &g_new);
+			change_cl_init_with_change(g, &g_new); //2022.02.24
 			if (step == 0) {
 				float yy = scalar_product(&y, &y, n);
 				if (fabs(yy) > epsilon_fl) {

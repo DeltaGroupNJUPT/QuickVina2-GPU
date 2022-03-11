@@ -1,4 +1,6 @@
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\vc142.pdb
+d:\vina\qvina_gpu_2\qvina_gpu_2\release\main.obj
+d:\vina\qvina_gpu_2\qvina_gpu_2\release\monte_carlo.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\ssd.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\random.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\quaternion.obj
@@ -11,7 +13,6 @@ d:\vina\qvina_gpu_2\qvina_gpu_2\release\non_cache.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\naive_non_cache.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\my_pid.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\mutate.obj
-d:\vina\qvina_gpu_2\qvina_gpu_2\release\monte_carlo.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\model.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\manifold.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\grid.obj
@@ -20,7 +21,6 @@ d:\vina\qvina_gpu_2\qvina_gpu_2\release\current_weights.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\coords.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\cache.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\wrapcl.obj
-d:\vina\qvina_gpu_2\qvina_gpu_2\release\main.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\weighted_terms.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\visited.obj
 d:\vina\qvina_gpu_2\qvina_gpu_2\release\terms.obj

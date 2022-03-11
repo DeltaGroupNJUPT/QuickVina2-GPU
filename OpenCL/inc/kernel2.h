@@ -34,7 +34,7 @@
 #define SMOOTH_SIZE 2051
 #define MAX_CONTAINER_SIZE_EVERY_WI 5
 #define EL_TYPE_H_CL 0
-#define SIZE_OF_LIST (10*(6 +  MAX_NUM_OF_LIG_TORSION + MAX_NUM_OF_FLEX_TORSION ))
+#define SIZE_OF_LIST (10*(6 +  MAX_NUM_OF_LIG_TORSION ))//10*N 2022.02.24 lig_torsion=N_rot
 
 
 typedef struct {
@@ -177,12 +177,12 @@ typedef struct {
 	output_type_cl  x_cl;
 	float energy;
 	change_cl d_cl;
-	long d_zero;
-	long d_positive;
+	long d_zero; //long?? cpu与gpu 16是否相同 2022.02.24
+	long d_positive;//从小到大 2022.02.24
 }ele_cl;
 
 typedef struct {
-	ele_cl *list_cl[SIZE_OF_LIST];
+	ele_cl *list_cl[SIZE_OF_LIST];//考虑代码整洁 去* 2022.02.24
 	int n_variable;
 	int p;
 	float tempf;

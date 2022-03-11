@@ -1,57 +1,4 @@
-﻿  cache.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  coords.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-  current_weights.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  everything.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  grid.cpp
-  manifold.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  model.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  monte_carlo.cpp
+﻿  monte_carlo.cpp
 D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
@@ -63,19 +10,14 @@ D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 
 D:\boost\boost_1_77_0\boost\progress.hpp(23): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp> instead.
 D:\boost\boost_1_77_0\boost\timer.hpp(21): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> instead.
 D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(134,38): warning C4102: “https”: 未引用的标签
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(320,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(326,49): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(330,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(332,51): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(336,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(338,61): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(358,91): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(359,110): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(360,83): warning C4244: “=”: 从“T”转换到“float”，可能丢失数据
-          with
-          [
-              T=fl
-          ]
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(321,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(327,49): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(331,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(333,51): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(337,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(339,61): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(359,91): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(360,110): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
 D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(361,83): warning C4244: “=”: 从“T”转换到“float”，可能丢失数据
           with
           [
@@ -91,12 +33,12 @@ D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(363,83): warning C4244: “=
           [
               T=fl
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(374,111): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(375,84): warning C4244: “=”: 从“T”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(364,83): warning C4244: “=”: 从“T”转换到“float”，可能丢失数据
           with
           [
               T=fl
           ]
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(375,111): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
 D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(376,84): warning C4244: “=”: 从“T”转换到“float”，可能丢失数据
           with
           [
@@ -112,204 +54,80 @@ D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(378,84): warning C4244: “=
           [
               T=fl
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(380,65): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(381,61): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(382,73): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(383,77): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(389,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(397,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(416,33): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(423,57): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(424,61): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(425,77): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(426,69): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(434,65): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(379,84): warning C4244: “=”: 从“T”转换到“float”，可能丢失数据
+          with
+          [
+              T=fl
+          ]
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(381,65): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(382,61): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(383,73): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(384,77): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(390,23): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(398,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(417,33): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(424,57): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(425,61): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(426,77): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(427,69): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(435,65): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
           with
           [
               _Ty=double
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(461,103): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(463,115): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(462,103): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(464,115): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
           with
           [
               _Ty=double
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(465,114): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(466,114): warning C4244: “=”: 从“_Ty”转换到“float”，可能丢失数据
           with
           [
               _Ty=double
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(472,47): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(476,34): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(477,17): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(480,20): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(481,43): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(485,52): warning C4244: “=”: 从“const _Ty”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(473,47): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(477,34): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(478,17): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(481,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(482,43): warning C4244: “=”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(486,52): warning C4244: “=”: 从“const _Ty”转换到“float”，可能丢失数据
           with
           [
               _Ty=double
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(488,60): warning C4244: “=”: 从“const _Ty1”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(489,60): warning C4244: “=”: 从“const _Ty1”转换到“float”，可能丢失数据
           with
           [
               _Ty1=fl
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(489,60): warning C4244: “=”: 从“const _Ty2”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(490,60): warning C4244: “=”: 从“const _Ty2”转换到“float”，可能丢失数据
           with
           [
               _Ty2=fl
           ]
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(498,35): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(503,47): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(509,40): warning C4838: 从“const fl”转换到“float”需要收缩转换
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(509,40): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(509,53): warning C4838: 从“const fl”转换到“float”需要收缩转换
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(509,53): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(509,66): warning C4838: 从“const fl”转换到“float”需要收缩转换
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(509,66): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,46): warning C4838: 从“fl”转换到“float”需要收缩转换
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,46): warning C4244: “初始化”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,61): warning C4838: 从“fl”转换到“float”需要收缩转换
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,61): warning C4244: “初始化”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,77): warning C4838: 从“fl”转换到“float”需要收缩转换
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,77): warning C4244: “初始化”: 从“fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,33): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(248,13): warning C4101: “program”: 未引用的局部变量
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(249,9): warning C4101: “program_size”: 未引用的局部变量
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(246,8): warning C4101: “program_file”: 未引用的局部变量
-  mutate.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  my_pid.cpp
-  naive_non_cache.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  non_cache.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  parallel_mc.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-D:\boost\boost_1_77_0\boost\progress.hpp(23): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp> instead.
-D:\boost\boost_1_77_0\boost\timer.hpp(21): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> instead.
-  parallel_progress.cpp
-D:\boost\boost_1_77_0\boost\progress.hpp(23): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> or <boost/timer/progress_display.hpp> instead.
-D:\boost\boost_1_77_0\boost\timer.hpp(21): message : This header is deprecated. Use the facilities in <boost/timer/timer.hpp> instead.
-  parse_pdbqt.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  pdb.cpp
-  quasi_newton.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  quaternion.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  random.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  ssd.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  正在编译...
-  szv_grid.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  terms.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  visited.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  weighted_terms.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  main.cpp
-D:\boost\boost_1_77_0\boost\random\mixmax.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\boost\boost_1_77_0\boost\random\detail\mixmax_skip_N17.ipp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(170,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(200,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(221,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\conf.h(244,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(35,17): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\visited.h(122,19): warning C4018: “>=”: 有符号/无符号不匹配
-  wrapcl.cpp
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(132,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(151,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(298,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(285,14): warning C4101: “mem_size”: 未引用的局部变量
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(404,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(409,23): warning C4018: “<”: 有符号/无符号不匹配
-D:\vina\Qvina_GPU_2\Qvina_GPU_2\OpenCL\src\wrapcl.cpp(437,23): warning C4018: “<”: 有符号/无符号不匹配
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(499,35): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(504,47): warning C4244: “=”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,40): warning C4838: 从“const fl”转换到“float”需要收缩转换
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,40): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,53): warning C4838: 从“const fl”转换到“float”需要收缩转换
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,53): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,66): warning C4838: 从“const fl”转换到“float”需要收缩转换
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(510,66): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,46): warning C4838: 从“fl”转换到“float”需要收缩转换
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,46): warning C4244: “初始化”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,61): warning C4838: 从“fl”转换到“float”需要收缩转换
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,61): warning C4244: “初始化”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,77): warning C4838: 从“fl”转换到“float”需要收缩转换
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(511,77): warning C4244: “初始化”: 从“fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(512,33): warning C4244: “初始化”: 从“const fl”转换到“float”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(655,24): warning C4244: “=”: 从“cl_ulong”转换到“double”，可能丢失数据
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(249,13): warning C4101: “program”: 未引用的局部变量
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(250,9): warning C4101: “program_size”: 未引用的局部变量
+D:\vina\Qvina_GPU_2\Qvina_GPU_2\lib\monte_carlo.cpp(247,8): warning C4101: “program_file”: 未引用的局部变量
     正在创建库 D:\vina\Qvina_GPU_2\Release\Qvina_GPU_2.lib 和对象 D:\vina\Qvina_GPU_2\Release\Qvina_GPU_2.exp
   正在生成代码
-  Previous IPDB not found, fall back to full compilation.
-  All 5588 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 5593 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
   Qvina_GPU_2.vcxproj -> D:\vina\Qvina_GPU_2\Release\Qvina_GPU_2.exe
