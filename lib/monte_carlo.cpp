@@ -35,7 +35,7 @@
 #include <thread>
 #include <parallel_progress.cpp>
 //#include <parallel_progress.cpp>
-#include <boost/smart_ptr/detail/sp_win32_sleep.hpp>
+//#include <boost/smart_ptr/detail/sp_win32_sleep.hpp>
 
 
 
@@ -151,7 +151,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 	quasi_newton quasi_newton_par; quasi_newton_par.max_steps = ssd_par.evals;
 	output_type origin = tmp;
 #ifdef DATA_DISTRIBUTION_TEST
-	// ÓÃÓÚ´æ´¢ÊµÑéÊý¾Ý
+	// ï¿½ï¿½ï¿½Ú´æ´¢Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	std::fstream f1;
 	f1.open("data_distri_exauh8_loop_21945_1.txt", std::ios::app | std::ios::in);
 #endif
@@ -162,7 +162,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 		output_type candidate = tmp;
 		mutate_conf(candidate.c, m, mutation_amplitude, generator);
 #ifdef DATA_DISTRIBUTION_TEST
-		// Ð´ÈëÊµÑéÊý¾Ý
+		// Ð´ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < 3; i++)f1 << candidate.c.ligands[0].rigid.position[i] << " ";
 		f1 << candidate.c.ligands[0].rigid.orientation.R_component_1() << " ";
 		f1 << candidate.c.ligands[0].rigid.orientation.R_component_2() << " ";
@@ -186,7 +186,7 @@ void monte_carlo::operator()(model& m, output_container& out, const precalculate
 				quasi_newton_par(m, p, ig, tmp, g, authentic_v);
 				end2 = clock();
 				double time2 = end2 - start2;
-			//	cout << "Ô¤²âÊ±¼äÎª£º" << double(end1 - start1) / CLOCKS_PER_SEC << "s" << endl;
+			//	cout << "Ô¤ï¿½ï¿½Ê±ï¿½ï¿½Îªï¿½ï¿½" << double(end1 - start1) / CLOCKS_PER_SEC << "s" << endl;
 				m.set(tmp.c); // FIXME? useless?
 				tmp.coords = m.get_heavy_atom_movable_coords();
 				add_to_output_container(out, tmp, min_rmsd, num_saved_mins); // 20 - max size
