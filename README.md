@@ -56,12 +56,12 @@ Note: ensure the line ending are CLRF
 
 4. set GPU platform `GPU_PLATFORM` and OpenCL version `OPENCL_VERSION`in `Makefile`. some options are given below:
 
-   **Note**: -DOPENCL_3_0 is highly recommended in Linux. To check the OpenCL version on a given platform, use `clinfo`.
+   **Note**: `-DOPENCL_3_0` is highly recommended in Linux, please avoid using `-OPENCL_1_2` in the Makefile setting. To check the OpenCL version on a given platform, use `clinfo`.
 
 |Macros|Options|Descriptions|
 |--|--|--|	
 |GPU_PLATFORM|-DNVIDIA_PLATFORM / -DAMD_PLATFORM|NVIDIA / AMD GPU platform
-|  OPENCL_VERSION | -DOPENCL_3_0 / -DOPENCL_1_2|OpenCL version 3.0 / 1.2
+|  OPENCL_VERSION | -DOPENCL_3_0 / -DOPENCL_2_0|OpenCL version 3.0 / 2.0
 
 6. type `make clean` and `make source` to build Vina-GPU that compile the kernel files on the fly (this would take some time at the first use)
 7. after a successful compiling, `Vina-GPU` can be seen in the directory 
