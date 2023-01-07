@@ -1,6 +1,6 @@
-# QVina-GPU
+# QuickVina 2-GPU
 
-QVina-GPU is proposed to parallelize the efficient QVina2 docking software, which can exploit the highly-parallel hardware architecture to speed up the process of molecule docking.
+QuickVina 2-GPU is proposed to parallelize the efficient QVina2 docking software, which can exploit the highly-parallel hardware architecture to speed up the process of molecule docking.
 
 ## Compiling and Running 
 
@@ -10,7 +10,7 @@ QVina-GPU is proposed to parallelize the efficient QVina2 docking software, whic
 
 **Run on the executable file**
 
-1. For the first time to use QVina-GPU, please run `QVina-GPU-K.exe` with command `./Qvina_GPU_K.exe --config ./input_file_example/2bm2_config.txt`
+1. For the first time to use QuickVina 2-GPU, please run `QVina-GPU-K.exe` with command `./Qvina_GPU_K.exe --config ./input_file_example/2bm2_config.txt`
    You are supposed to have the docking results `2bm2_out.pdbqt` of our example complex and a `Kernel2_Opt.bin` file
 2. Once you have the `Kernel2_Opt.bin` file, you can run Qvina2_GPU.exe` without compiling the kernel files (thus to save more runtime)
 
